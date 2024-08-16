@@ -1,12 +1,13 @@
 import React from "react";
+import UserContext from "./UserContext";
 
 const UserProfile = () => {
-  const UserContext = React.useContext();
+  const userData = React.useContext(UserContext);
   return (
     <div style={{ border: "1px solid gray", padding: "10px", margin: "10px" }}>
-      <h2 style={{ color: "blue" }}>{UserContext.name}</h2>
+      <h2 style={{ color: "blue" }}>{userData.name}</h2>
       <p>
-        Email: <span style={{ fontWeight: "bold" }}>{UserContext.email}</span>
+        Email: <span style={{ fontWeight: "bold" }}>{userData.email}</span>
       </p>
     </div>
   );
