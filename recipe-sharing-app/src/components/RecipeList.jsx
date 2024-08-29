@@ -1,3 +1,4 @@
+import RecipeDetails from "./RecipeDetails";
 import { useRecipeStore } from "./recipeStore";
 
 const RecipeList = () => {
@@ -7,8 +8,7 @@ const RecipeList = () => {
     <div>
       {recipes.map((recipe) => (
         <div key={recipe.id}>
-          <h3>{recipe.title}</h3>
-          <p>{recipe.description}</p>
+          <RecipeDetails recipeId={recipe.id} />
         </div>
       ))}
     </div>
