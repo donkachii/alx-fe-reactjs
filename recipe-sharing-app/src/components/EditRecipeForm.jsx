@@ -1,16 +1,10 @@
 import { useState } from "react";
 import { useRecipeStore } from "./recipeStore";
-import { useNavigate } from "react-router";
 
-const AddRecipeForm = () => {
+const EditRecipeForm = () => {
   const addRecipe = useRecipeStore((state) => state.addRecipe);
-  const recipes = useRecipeStore((state) => state.recipes);
-  console.log("🚀 ~ AddRecipeForm ~ recipes:", recipes);
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-  const router = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,4 +31,4 @@ const AddRecipeForm = () => {
   );
 };
 
-export default AddRecipeForm;
+export default EditRecipeForm;
