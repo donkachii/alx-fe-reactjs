@@ -1,4 +1,4 @@
-import { FavoritesList } from "./FavoritesList";
+import FavoritesList from "./FavoritesList";
 import { useRecipeStore } from "./recipeStore";
 import { SearchBar } from "./SearchBar";
 

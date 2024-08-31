@@ -1,10 +1,19 @@
+import { Link } from "react-router-dom";
 import { useRecipeStore } from "./recipeStore";
 import { Button } from "./ui/button";
+import { useEffect } from "react";
 
 const RecommendationsList = () => {
-  const recommendations = useRecipeStore(
-    (state) => state.generateRecommendations
-  );
+  const { recommendations, generateRecommendations, addFavorite } =
+    useRecipeStore((state) => ({
+      recommendations: state.recommendations,
+      generateRecommendations: state.generateRecommendations,
+      addFavorite: state.addFavorite,
+    }));
+
+  useEffect(() => {
+    generateRecommendations();
+  }, [generateRecommendations]);
 
   console.log(recommendations);
   return (
@@ -18,6 +27,17 @@ const RecommendationsList = () => {
       >
         Get Recommendations
       </Button>
+
+      {recommendations.map((recipe) => (
+        <div key={recipe.id}>
+          <h3>{recipe.title}</h3>
+          <p>{recipe.description}</p>
+          <Link to={`/recipe/${recipe.id}`}>View Details</Link>
+          <button onClick={() => addFavorite(recipe.id)}>
+            Add to Favorites
+          </button>
+        </div>
+      ))}
     </div>
   );
 };
