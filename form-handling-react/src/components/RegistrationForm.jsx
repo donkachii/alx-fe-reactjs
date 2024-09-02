@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const RegistrationForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  //   const [username, setUsername] = useState("");
+  //   const [password, setPassword] = useState("");
+  //   const [email, setEmail] = useState("");
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
