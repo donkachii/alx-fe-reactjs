@@ -1,23 +1,23 @@
 import { useQuery } from "react-query";
 
-const getPosts = async () => {
+const fetchPosts = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   return res.json();
 };
 const PostsComponent = () => {
-  const { data, error, isLoading } = useQuery("getPosts", getPosts);
+  const { data, isError, isLoading } = useQuery("fetchPosts", fetchPosts);
 
   console.log(data);
 
   if (isLoading) return <div>Loading...</div>;
   // Handle error state
-  if (error) return <div>Error loading data</div>;
+  if (isError) return <div>Error loading data</div>;
 
   // Render the fetched data
   return (
     <div>
       <h1>My Posts</h1>
-      <button onClick={getPosts}>Click here to get Posts</button>
+      <button onClick={fetchPosts}>Click here to get Posts</button>
       {data.map((item) => (
         <div
           style={{
