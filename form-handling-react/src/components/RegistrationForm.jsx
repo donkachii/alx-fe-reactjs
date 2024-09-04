@@ -14,6 +14,18 @@ const RegistrationForm = () => {
     password: Yup.string().required("Password is required"),
   });
 
+  if (!username) {
+    setErrors({ ...username, username: "Username Required" });
+  }
+  if (!email) {
+    setErrors({ ...email, email: "Email Required" });
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+    setErrors({ ...email, email: "Invalid email address" });
+  }
+  if (!password) {
+    setErrors({ ...password, password: "Password Required" });
+  }
+
   return (
     <div>
       <Formik
