@@ -6,10 +6,12 @@ const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [errors, setErrors] = useState({});
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Name is required"),
+    username: Yup.string().required("Username is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   return (
@@ -17,6 +19,27 @@ const RegistrationForm = () => {
       <Formik
         initialValues={{ username: "", password: "", email: "" }}
         validationSchema={validationSchema}
+        validate={(values) => {
+          const errors = {};
+          if (!values.username) {
+            errors.username = "Required";
+            setErrors({ ...username, username: "Username Required" });
+          }
+          if (!values.email) {
+            errors.email = "Required";
+            setErrors({ ...email, email: "Email Required" });
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          ) {
+            errors.email = "Invalid email address";
+            setErrors({ ...email, email: "Invalid email address" });
+          }
+          if (!values.password) {
+            errors.password = "Required";
+            setErrors({ ...password, password: "Password Required" });
+          }
+          return errors;
+        }}
         onSubmit={(values) => {
           console.log(values);
         }}
