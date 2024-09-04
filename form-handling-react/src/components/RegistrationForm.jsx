@@ -1,11 +1,11 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const RegistrationForm = () => {
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -23,11 +23,29 @@ const RegistrationForm = () => {
       >
         {() => (
           <Form>
-            <Field type="text" name="username" />
+            <Field
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
             <ErrorMessage name="username" component="div" />
-            <Field type="password" name="password" />
+            <Field
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <ErrorMessage name="password" component="div" />
-            <Field type="email" name="email" />
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <ErrorMessage name="email" component="div" />
             <button type="submit">Submit</button>
           </Form>
