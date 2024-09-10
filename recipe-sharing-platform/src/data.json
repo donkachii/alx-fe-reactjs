@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Breakfast Burrito",
+    "summary": "Warm and filling burrito filled with scrambled eggs, black beans, and avocado.",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Salad",
+    "summary": "Refreshing salad made with grilled chicken, mixed greens, cherry tomatoes, and cucumber.",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 3,
+    "title": "Grilled Cheese Sandwich",
+    "summary": "Classic comfort food sandwich filled with melted cheese between two slices of bread.",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 4,
+    "title": "Tacos Al Pastor",
+    "summary": "Spicy Mexican dish made with marinated pork, pineapple, onions, and cilantro.",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 5,
+    "title": "Pizza Margherita",
+    "summary": "Simple Italian pizza topped with fresh basil, mozzarella, and tomato sauce.",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 6,
+    "title": "Baked Salmon",
+    "summary": "Juicy salmon fillet served with lemon butter sauce and steamed asparagus.",
+    "image": "https://via.placeholder.com/150"
+  }
+]
