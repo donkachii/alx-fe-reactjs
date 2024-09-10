@@ -18,7 +18,7 @@ const HomePage = () => {
         {recipes &&
           recipes?.map((recipe) => (
             <div
-              className="flex flex-col justify-between p-4 m-4 duration-300 border border-gray-300 rounded-md cursor-pointer hover:scale-105"
+              className="flex flex-col justify-between p-4 m-4 duration-300 border border-gray-300 rounded-md cursor-pointer hover:scale-105 hover:shadow-md"
               key={recipe.id}
             >
               <h2>{recipe.title}</h2>
