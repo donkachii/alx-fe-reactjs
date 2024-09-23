@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const searchUsers = async ({
+export const fetchUserData = async ({
   username,
   location,
   minRepos,
