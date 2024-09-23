@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
-import data from "../data.json";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
-  const [recipes, setRecipes] = useState("");
+  const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setRecipes(data);
+    fetch("/data.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => setRecipes(data))
+      .catch((error) => setError(error.message));
   }, []);
 
   return (
@@ -17,20 +26,19 @@ const HomePage = () => {
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
         {recipes &&
           recipes?.map((recipe) => (
-            <div
-              className="flex flex-col justify-between gap-3 p-4 m-4 duration-300 border border-gray-300 rounded-md cursor-pointer hover:scale-105 hover:shadow-md"
-              key={recipe.id}
-            >
-              <h2 className="text-xl md:text-2xl md:font-semibold">
-                {recipe.title}
-              </h2>
-              <p className="text-sm md:text-lg">{recipe.summary}</p>
-              <img
-                className="w-full h-auto"
-                src={recipe.image}
-                alt={recipe.title}
-              />
-            </div>
+            <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+              <div className="flex flex-col justify-between gap-3 p-4 m-4 duration-300 border border-gray-300 rounded-md cursor-pointer hover:scale-105 hover:shadow-md">
+                <h2 className="text-xl md:text-2xl md:font-semibold">
+                  {recipe.title}
+                </h2>
+                <p className="text-sm md:text-lg">{recipe.summary}</p>
+                <img
+                  className="w-full h-auto"
+                  src={recipe.image}
+                  alt={recipe.title}
+                />
+              </div>
+            </Link>
           ))}
       </div>
     </div>
