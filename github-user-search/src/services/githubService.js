@@ -10,7 +10,7 @@ export const fetchUserData = async ({
   if (location) query += `+location:${location}`;
   if (minRepos) query += `+repos:>=${minRepos}`;
 
-  const endpoint = `${process.env.REACT_APP_GITHUB_API_KEY}?q=${query}&page=${page}`;
+  const endpoint = `https://api.github.com/search/users?q=${query}&page=${page}`;
 
   try {
     const response = await axios.get(endpoint);
